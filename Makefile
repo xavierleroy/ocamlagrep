@@ -27,7 +27,7 @@ install:
 	cp libagrep.a $(DESTDIR)
 	if test -f dllagrep.so; then cp dllagrep.so $(DESTDIR); fi
 	destdir=$(DESTDIR); ldconf=$(CAMLSTDLIB)/ld.conf; \
-        if test `grep -s -c ^$$destdir'$$' $$ldconf || :` = 0; \
+        if test `grep -s -c '^'$$destdir'$$' $$ldconf || :` = 0; \
         then echo $$destdir >> $$ldconf; fi
 
 testagrep: testagrep.ml agrep.cma libagrep.a
