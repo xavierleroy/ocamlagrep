@@ -23,7 +23,7 @@ libagrep.a: $(C_OBJS)
 
 install:
 	mkdir -p $(DESTDIR)
-	cp agrep.cmi agrep.cma agrep.cmxa $(DESTDIR)
+	cp agrep.cmi agrep.cma agrep.cmxa agrep.a $(DESTDIR)
 	cp libagrep.a $(DESTDIR)
 	if test -f dllagrep.so; then cp dllagrep.so $(DESTDIR); fi
 	destdir=$(DESTDIR); ldconf=$(CAMLSTDLIB)/ld.conf; \
