@@ -1,3 +1,17 @@
+(***********************************************************************)
+(*                                                                     *)
+(*            The "agrep" library for Objective Caml                   *)
+(*                                                                     *)
+(*         Xavier Leroy, projet Cristal, INRIA Rocquencourt            *)
+(*                                                                     *)
+(*  Copyright 2002 Institut National de Recherche en Informatique et   *)
+(*  en Automatique.  All rights reserved.  This file is distributed    *)
+(*  under the terms of the GNU Library General Public License.         *)
+(*                                                                     *)
+(***********************************************************************)
+
+(* $Id$ *)
+
 type bitmatrix
 external new_bitmatrix : int -> int -> bitmatrix
                        = "caml_agrep_new_bitmatrix"
@@ -243,16 +257,16 @@ let pattern ?transl s = compile_pattern ?transl (parse_pattern s)
 
 let pattern_string ?transl s = compile_pattern ?transl (Simple[String s])
 
-(* Translation tables for ISO 8859-1 (Latin 1) *)
+(* Translation tables for ISO 8859-15 (Latin 1 with Euro) *)
 
-module Iso8859_1 =
+module Iso8859_15 =
   struct
     let case_insensitive =
-"\000\001\002\003\004\005\006\007\008\t\n\011\012\013\014\015\016\017\018\019\020\021\022\023\024\025\026\027\028\029\030\031 !\"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\127\128\129\130\131\132\133\134\135\136\137\138\139\140\141\142\143\144\145\146\147\148\149\150\151\152\153\154\155\156\157\158\159 ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿àáâãäåæçèéêëìíîïğñòóôõö×øùúûüışßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ"
+"\000\001\002\003\004\005\006\007\008\t\n\011\012\013\014\015\016\017\018\019\020\021\022\023\024\025\026\027\028\029\030\031 !\"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\127\128\129\130\131\132\133\134\135\136\137\138\139\140\141\142\143\144\145\146\147\148\149\150\151\152\153\154\155\156\157\158\159 ¡¢£¤¥¨§¨©ª«¬­®¯°±²³¸µ¶·¸¹º»½½ÿ¿àáâãäåæçèéêëìíîïğñòóôõö×øùúûüışßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ"
 
     let accent_insensitive =
-"\000\001\002\003\004\005\006\007\008\t\n\011\012\013\014\015\016\017\018\019\020\021\022\023\024\025\026\027\028\029\030\031 !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\127\128\129\130\131\132\133\134\135\136\137\138\139\140\141\142\143\144\145\146\147\148\149\150\151\152\153\154\155\156\157\158\159 ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿AAAAAAACEEEEIIIIĞNOOOOO×OUUUUYŞsaaaaaaaceeeeiiiiğnooooo÷ouuuuyşy"
+"\000\001\002\003\004\005\006\007\008\t\n\011\012\013\014\015\016\017\018\019\020\021\022\023\024\025\026\027\028\029\030\031 !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\127\128\129\130\131\132\133\134\135\136\137\138\139\140\141\142\143\144\145\146\147\148\149\150\151\152\153\154\155\156\157\158\159 ¡¢£¤¥S§s©ª«¬­®¯°±²³Zµ¶·z¹º»OoY¿AAAAAAACEEEEIIIIĞNOOOOO×OUUUUYŞsaaaaaaaceeeeiiiiğnooooo÷ouuuuyşy"
 
     let case_and_accent_insensitive =
-"\000\001\002\003\004\005\006\007\008\t\n\011\012\013\014\015\016\017\018\019\020\021\022\023\024\025\026\027\028\029\030\031 !\"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\127\128\129\130\131\132\133\134\135\136\137\138\139\140\141\142\143\144\145\146\147\148\149\150\151\152\153\154\155\156\157\158\159 ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿aaaaaaaceeeeiiiiğnooooo×ouuuuyşsaaaaaaaceeeeiiiiğnooooo÷ouuuuyşy"
+"\000\001\002\003\004\005\006\007\008\t\n\011\012\013\014\015\016\017\018\019\020\021\022\023\024\025\026\027\028\029\030\031 !\"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\127\128\129\130\131\132\133\134\135\136\137\138\139\140\141\142\143\144\145\146\147\148\149\150\151\152\153\154\155\156\157\158\159 ¡¢£¤¥s§s©ª«¬­®¯°±²³zµ¶·z¹º»ooy¿aaaaaaaceeeeiiiiğnooooo×ouuuuyşsaaaaaaaceeeeiiiiğnooooo÷ouuuuyşy"
   end

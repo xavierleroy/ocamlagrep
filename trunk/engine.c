@@ -1,3 +1,17 @@
+/***********************************************************************/
+/*                                                                     */
+/*            The "agrep" library for Objective Caml                   */
+/*                                                                     */
+/*         Xavier Leroy, projet Cristal, INRIA Rocquencourt            */
+/*                                                                     */
+/*  Copyright 2002 Institut National de Recherche en Informatique et   */
+/*  en Automatique.  All rights reserved.  This file is distributed    */
+/*  under the terms of the GNU Library General Public License.         */
+/*                                                                     */
+/***********************************************************************/
+
+/* $Id$ */
+
 #include <stdlib.h>
 #include <string.h>
 #include <caml/mlvalues.h>
@@ -45,7 +59,7 @@ unsigned char word_constituent[256] = {
   /* 128-159 */
      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
   /*   ¡ ¢ £ ¤ ¥ ¦ § ¨ © ª « ¬ ­ ® ¯ ° ± ² ³ ´ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿ */
-     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+     0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,1,1,0,
   /* À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß */
      1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,
   /* à á â ã ä å æ ç è é ê ë ì í î ï ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ */

@@ -25,6 +25,6 @@ let _ =
                     s ~pos:0 ~len:(String.length s) in
           if n = max_int
           then printf "No match"
-          else printf "Match (%d error(s))" n;
+          else printf "Match, with %d error(s)" n;
           print_newline())
-    ""
+    "Usage: testagrep [options] <pattern> <string>\nOptions are:"

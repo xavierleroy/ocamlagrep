@@ -1,3 +1,17 @@
+/***********************************************************************/
+/*                                                                     */
+/*            The "agrep" library for Objective Caml                   */
+/*                                                                     */
+/*         Xavier Leroy, projet Cristal, INRIA Rocquencourt            */
+/*                                                                     */
+/*  Copyright 2002 Institut National de Recherche en Informatique et   */
+/*  en Automatique.  All rights reserved.  This file is distributed    */
+/*  under the terms of the GNU Library General Public License.         */
+/*                                                                     */
+/***********************************************************************/
+
+/* $Id$ */
+
 static value FUNCTION_NAME(ulong * table, uint pattern_length,
                            uchar * text, mlsize_t length)
 {
