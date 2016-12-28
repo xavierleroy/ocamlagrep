@@ -1,0 +1,4 @@
+- Fix inconsistent use of caml_stat_alloc / free (Max Mouratov)
+- Migration to Github
+
+Release 1.0, 2002-02-05

@@ -137,9 +137,9 @@ static value match_general(ulong * table, ulong m,
   long retcode;
 
   nwords = (m + BITS_PER_WORD - 1) / BITS_PER_WORD;
-  R = stat_alloc((nerrs + 1) * sizeof(ulong *));
-  for (n = 0; n <= nerrs; n++) R[n] = stat_alloc(nwords * sizeof(ulong));
-  Rpbefore = stat_alloc(nwords * sizeof(ulong));
+  R = caml_stat_alloc((nerrs + 1) * sizeof(ulong *));
+  for (n = 0; n <= nerrs; n++) R[n] = caml_stat_alloc(nwords * sizeof(ulong));
+  Rpbefore = caml_stat_alloc(nwords * sizeof(ulong));
   /* Initialize Found */
   Found_offset = m / BITS_PER_WORD;
   Found_mask = 1UL << (m % BITS_PER_WORD);
@@ -191,9 +191,9 @@ static value match_general(ulong * table, ulong m,
   retcode = CAML_MAX_INT;
   /* Cleanup */
  exit:
-  for (n = 0; n <= nerrs; n++) free(R[n]);
-  free(R);
-  free(Rpbefore);
+  for (n = 0; n <= nerrs; n++) caml_stat_free(R[n]);
+  caml_stat_free(R);
+  caml_stat_free(Rpbefore);
   return Val_long(retcode);
 }
 
