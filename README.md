@@ -1,11 +1,10 @@
-DESCRIPTION
------------
+# agrep
 
 This library implements the Wu-Manber algorithm for string searching
-with errors, popularized by the "agrep" Unix command and the "glimpse"
+with errors, popularized by the `agrep` Unix command and the `glimpse`
 file indexing tool.  It was developed as part of a search engine for a
 largish MP3 collection; the "with error" searching comes handy for those
-who can't spell Liszt or Shostakovitch.  
+who can't spell Liszt or Shostakovitch.
 
 Given a search pattern and a string, this algorithm determines whether
 the string contains a substring that matches the pattern up to a
@@ -17,29 +16,26 @@ errors is the Levenshtein edit distance between the pattern and the
 matched substring.
 
 The search patterns are roughly those of the Unix shell, including
-one-character wildcard (?), character classes ([0-9]) and multi-character
-wildcard (*).  In addition, conjunction (&) and alternative (|) are
+one-character wildcard (`?`), character classes (`[0-9]`) and multi-character
+wildcard (`*`).  In addition, conjunction (`&`) and alternative (`|`) are
 supported.  General regular expressions are not supported, however.
 
 Performance is quite good: for short patterns (less than 31 characters)
-and no errors, this library is about 8 times faster than OCaml's "Str"
+and no errors, this library is about 8 times faster than OCaml's `Str`
 regular expression library.  Speed decreases with the number of errors
-allowed, but even with 3 errors we are still faster than "Str".
+allowed, but even with 3 errors we are still faster than `Str`.
 
-The algorithm is described in S. Wu and U. Manber, ``Fast Text
-Searching With Errors", tech. rep. TR 91-11, University of Arizona, 1991.
+The algorithm is described in S. Wu and U. Manber, *Fast Text
+Searching With Errors*, tech. rep. TR 91-11, University of Arizona, 1991.
 It's a nice exercise in dynamic programming and bit-parallel implementation.
 
+## Licensing
 
-LICENSING
----------
-
-LGPL:  This code is distributed under the terms of the GNU Library
+LGPL: This code is distributed under the terms of the GNU Library
 General Public License version 2.
 
 
-INSTALLATION
-------------
+## Installation
 
 OCaml 3.04 and up is required.
 
@@ -49,11 +45,14 @@ to specify the installation directory (by default: the subdirectory "agrep"
 of OCaml's standard library directory).
 
 
-USAGE
------
+## Usage
 
-        ocamlc -I +agrep ... agrep.cma ...
+``ocamlc -I +agrep ... agrep.cma ...``
 or
-        ocamlopt -I +agrep ... agrep.cmxa ...
+``ocamlopt -I +agrep ... agrep.cmxa ...``
 
 See the commented interface agrep.mli for API documentation.
+
+## Example
+
+There's an example in `example/testagrep.ml`.
