@@ -72,23 +72,23 @@ let errors_substring_match pat ?(numerrs = 0) ?(wholeword = false)
 
 module Charset =
   struct
-    type t = string (* of length 32 *)
+    type t = bytes (* of length 32 *)
 
-    let new_empty () = String.make 32 '\000'
-    
-    let all = String.make 32 '\255'
+    let new_empty () = Bytes.make 32 '\000'
+
+    let all = Bytes.make 32 '\255'
 
     let add s c =
       let i = Char.code c in
-      s.[i lsr 3] <- Char.chr(Char.code s.[i lsr 3] lor (1 lsl (i land 7)))
+      Bytes.set s (i lsr 3) (Char.chr (Char.code (Bytes.get  s (i lsr 3)) lor (1 lsl (i land 7))))
 
     let add_range s c1 c2 =
       for i = Char.code c1 to Char.code c2 do add s (Char.chr i) done
 
     let complement s =
-      let r = String.create 32 in
+      let r = Bytes.create 32 in
       for i = 0 to 31 do
-        r.[i] <- Char.chr(Char.code s.[i] lxor 0xFF)
+        Bytes.set r i (Char.chr(Char.code s.[i] lxor 0xFF))
       done;
       r
 
@@ -150,7 +150,7 @@ let compile_simple_pattern transl sp =
       done;
       fill (pos + String.length s) rem
   | Char_class cls :: rem ->
-      Charset.iter (fun c -> add_char transl bm len c pos) cls;
+      Charset.iter (fun c -> add_char transl bm len c pos) (Bytes.to_string cls);
       fill (pos + 1) rem
   | Wildcard :: rem ->
       set_bit bm len 256 pos;
@@ -227,7 +227,7 @@ let parse_pattern s =
     let cls = Charset.new_empty() in
     if i < String.length s && s.[i] = '^' then begin
       let j = parse_class cls (i+1) in
-      (Charset.complement cls, j)
+      (Charset.complement (Bytes.to_string cls), j)
     end else begin
       let j = parse_class cls i in
       (cls, j)
