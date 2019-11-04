@@ -130,9 +130,8 @@ let simple_pattern_len sp =
   List.fold_left
     (fun len p ->
       match p with
-        Char c -> 1 + len
+      | Char _ | Char_class _ -> 1 + len
       | String s -> String.length s + len
-      | Char_class s -> 1 + len
       | Wildcard -> len)
     0 sp
 

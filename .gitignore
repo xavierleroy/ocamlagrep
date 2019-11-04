@@ -1,9 +1,3 @@
-*.o
-*.a
-*.cmi
-*.cmo
-*.cma
-*.cmx
-*.cmxa
-*.so
-testagrep
+_build/
+*.merlin
+*.install
