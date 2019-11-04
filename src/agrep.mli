@@ -83,9 +83,11 @@ val errors_substring_match:
 module Iso8859_15: sig
   val case_insensitive: string
       (** Translation table identifying uppercase and lowercase letters. *)
+
   val accent_insensitive: string
       (** Translation table identifying accented letters with the corresponding
           non-accented letters, while still preserving case. *)
+
   val case_and_accent_insensitive: string
       (** Translation table identifying accented letters with the corresponding
           non-accented letters, and uppercase and lowercase letters. *)

@@ -1,0 +1,4 @@
+(library
+ (public_name agrep)
+ (c_names engine)
+ (c_flags -O -D_XOPEN_SOURCE=500))
