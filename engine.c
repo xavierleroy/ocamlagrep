@@ -33,7 +33,7 @@ CAMLprim value caml_agrep_new_bitmatrix(value v_patlen, value v_nentries)
 {
   ulong nwords = (Long_val(v_patlen) + BITS_PER_WORD - 1) / BITS_PER_WORD;
   ulong size = nwords * Long_val(v_nentries);
-  value res = alloc(size, Abstract_tag);
+  value res = caml_alloc(size, Abstract_tag);
   memset((ulong *) res, 0, size * sizeof(ulong));
   return res;
 }

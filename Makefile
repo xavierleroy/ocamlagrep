@@ -5,7 +5,7 @@ OCAMLC=ocamlc -g
 OCAMLOPT=ocamlopt
 OCAMLMKLIB=ocamlmklib
 OCAMLDEP=ocamldep
-CFLAGS=-O -D_XOPEN_SOURCE=500
+CFLAGS=-O -D_XOPEN_SOURCE=500 -DCAML_NAME_SPACE
 
 C_OBJS=engine.o
 CAML_OBJS=agrep.cmo
