@@ -1,5 +1,7 @@
 CAMLSTDLIB=`ocamlc -where`
 DESTDIR=$(CAMLSTDLIB)/agrep
+STUBDESTDIR=$(CAMLSTDLIB)/stublibs
+LIB_EXT=so
 
 OCAMLC=ocamlc -g
 OCAMLOPT=ocamlopt
@@ -25,10 +27,14 @@ install:
 	mkdir -p $(DESTDIR)
 	cp agrep.cmi agrep.cma agrep.cmxa agrep.a $(DESTDIR)
 	cp libagrep.a $(DESTDIR)
-	if test -f dllagrep.so; then cp dllagrep.so $(DESTDIR); fi
+	if test -f dllagrep.$(LIB_EXT); then cp dllagrep.$(LIB_EXT) $(STUBDESTDIR); fi
 	destdir=$(DESTDIR); ldconf=$(CAMLSTDLIB)/ld.conf; \
         if test `grep -s -c '^'$$destdir'$$' $$ldconf || :` = 0; \
         then echo $$destdir >> $$ldconf; fi
+
+find-install:
+	ocamlfind install agrep \
+		agrep.cma agrep.cmi agrep.cmxa agrep.a libagrep.a dllagrep.$(LIB_EXT) META
 
 testagrep: testagrep.ml agrep.cma libagrep.a
 	$(OCAMLC) -I . -custom -o $@ agrep.cma testagrep.ml

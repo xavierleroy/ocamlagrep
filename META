@@ -1,0 +1,5 @@
+name = "agrep"
+description = "String searching with errors"
+version = "1.1"
+archive(byte) = "agrep.cma"
+archive(native) = "agrep.cmxa"
