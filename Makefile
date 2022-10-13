@@ -21,7 +21,7 @@ libagrep.a: $(C_OBJS)
 install:
 	ocamlfind install agrep META \
 	  agrep.mli agrep.cmi agrep.cmti agrep.cma agrep.cmxa agrep.a \
-          $(wildcard dllagrep.*)
+          libagrep.a $(wildcard dllagrep.*)
 
 uninstall:
 	ocamlfind remove agrep
