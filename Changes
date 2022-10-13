@@ -1,3 +1,5 @@
+Release 1.1
+- Install with ocamlfind (#3)
 - Use caml_alloc instead of alloc, and define CAML_NAME_SPACE.
 - Fix inconsistent use of caml_stat_alloc / free (Max Mouratov)
 - Migration to Github

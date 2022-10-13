@@ -5,5 +5,7 @@
 *.cma
 *.cmx
 *.cmxa
+*.cmt
+*.cmti
 *.so
 testagrep

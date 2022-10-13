@@ -1,0 +1,20 @@
+opam-version: "2.0"
+maintainer: "blue-prawn"
+authors: ["Xavier Leroy"]
+homepage: "https://github.com/xavierleroy/ocamlagrep/"
+bug-reports: "https://github.com/xavierleroy/ocamlagrep/issues"
+dev-repo: "git+https://github.com/xavierleroy/ocamlagrep.git"
+license: "LGPL-2.0-or-later"
+build: make
+remove: [["ocamlfind" "remove" "agrep"]]
+depends: [
+  "ocamlfind"
+]
+install: [
+  [make "install"]
+]
+synopsis: "String searching with errors"
+description: """
+This library implements the Wu-Manber algorithm for string searching
+with errors, popularized by the "agrep" Unix command and the "glimpse"
+file indexing tool."""

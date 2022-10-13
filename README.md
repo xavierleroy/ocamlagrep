@@ -37,19 +37,16 @@ General Public License version 2.
 
 ## Installation
 
-OCaml 3.04 and up is required.
+OCaml 3.04 and up is required, as well as the Findlib library manager.
 
 Do "make".
-Become superuser, and do "make install" or "make DESTDIR=... install"
-to specify the installation directory (by default: the subdirectory "agrep"
-of OCaml's standard library directory).
-
+Become superuser, and do "make install".
 
 ## Usage
 
-``ocamlc -I +agrep ... agrep.cma ...``
-or
-``ocamlopt -I +agrep ... agrep.cmxa ...``
+Compilation:  `ocamlfind ocamlopt -package agrep ...`
+
+Linking:      `ocamlfind ocamlopt -package agrep -linkpkg ...`
 
 See the commented interface agrep.mli for API documentation.
 
